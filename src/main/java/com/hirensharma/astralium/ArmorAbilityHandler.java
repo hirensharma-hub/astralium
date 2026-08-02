@@ -7,8 +7,6 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -52,7 +50,6 @@ public final class ArmorAbilityHandler {
         player.setDeltaMovement(motion.x, NORMAL_JUMP_VELOCITY, motion.z);
         player.fallDistance = 0.0F;
         player.getPersistentData().putBoolean(DOUBLE_JUMP_USED_TAG, true);
-        player.level().playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 0.65F, 1.35F);
         return true;
     }
 
