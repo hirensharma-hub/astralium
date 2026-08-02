@@ -1,0 +1,23 @@
+# Gradle and build output
+.gradle/
+build/
+out/
+
+# Minecraft development runtime and generated data
+run/
+run-data/
+.mixin.out/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+
+# Local logs and temporary files
+*.log
+hs_err_pid*
+replay_pid*

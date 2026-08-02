@@ -1,0 +1,21 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": {
+      "item": "astralium:astralium_chestplate"
+    },
+    "title": {
+      "translate": "advancements.astralium.voidbound.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.voidbound.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "void_landing": { "trigger": "astralium:voidbound" }
+  }
+}

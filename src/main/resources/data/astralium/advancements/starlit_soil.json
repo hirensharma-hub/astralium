@@ -1,0 +1,13 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": { "item": "astralium:astralium_hoe" },
+    "title": { "translate": "advancements.astralium.starlit_soil.title" },
+    "description": { "translate": "advancements.astralium.starlit_soil.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": { "create_astral_farmland": { "trigger": "astralium:starlit_soil" } }
+}

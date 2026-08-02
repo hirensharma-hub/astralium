@@ -1,0 +1,21 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": {
+      "item": "astralium:astralium_helmet"
+    },
+    "title": {
+      "translate": "advancements.astralium.starlight_aegis.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.starlight_aegis.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "wear_full_set": { "trigger": "astralium:full_armour" }
+  }
+}

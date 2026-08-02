@@ -1,0 +1,21 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": {
+      "item": "astralium:astralium_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.astralium.shifting_excavation.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.shifting_excavation.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "expanded_mining": { "trigger": "astralium:shifting_excavation" }
+  }
+}

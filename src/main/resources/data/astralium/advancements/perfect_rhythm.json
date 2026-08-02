@@ -1,0 +1,21 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": {
+      "item": "astralium:astralium_sword"
+    },
+    "title": {
+      "translate": "advancements.astralium.perfect_rhythm.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.perfect_rhythm.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "level_five": { "trigger": "astralium:perfect_rhythm" }
+  }
+}
