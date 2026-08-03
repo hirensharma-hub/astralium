@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.LevelEvent;
@@ -28,6 +29,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 
 public class AstraliumEvents {
+    private static final String VOID_FLOOR_JUMP_TAG = "AstraliumVoidFloorJump";
+
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.player.level().isClientSide || !(event.player instanceof ServerPlayer player)) return;
@@ -39,7 +42,24 @@ public class AstraliumEvents {
         }
         AstralMomentumHandler.tick(player);
         VoidFloorHandler.tickPlayer(player);
+        if (VoidFloorHandler.isSupported(player)) {
+            player.getPersistentData().putBoolean(VOID_FLOOR_JUMP_TAG, true);
+        } else if (player.onGround()) {
+            player.getPersistentData().remove(VOID_FLOOR_JUMP_TAG);
+        }
         ArmorAbilityHandler.tick(player);
+    }
+
+    @SubscribeEvent
+    public void onCriticalHit(CriticalHitEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)
+            || event.isVanillaCritical()
+            || !player.getPersistentData().getBoolean(VOID_FLOOR_JUMP_TAG)
+            || player.onGround()
+            || player.isSprinting()
+            || player.isSwimming()) return;
+        event.setDamageModifier(1.5F);
+        event.setResult(net.minecraftforge.eventbus.api.Event.Result.ALLOW);
     }
 
     @SubscribeEvent
