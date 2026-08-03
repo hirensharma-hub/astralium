@@ -46,7 +46,7 @@ public final class AstraliumConfig {
         MOMENTUM_ENABLED = common.comment("Enables all Astral Momentum chains. Disabling this clears active chains and axe modifiers.").define("enabled", true);
         MOMENTUM_MAX_LEVEL = common.defineInRange("maxLevel", 5, 1, 5);
         MOMENTUM_PERCENT_PER_LEVEL = common.comment("Each Momentum level grants a fixed 10% bonus.").defineInRange("percentPerLevel", 10, 10, 10);
-        MOMENTUM_RESET_TICKS = common.defineInRange("resetTicks", 50, 5, 20 * 60);
+        MOMENTUM_RESET_TICKS = common.defineInRange("resetTicks", 100, 5, 20 * 60);
         MOMENTUM_LEVEL_FIVE_EFFECT = common.define("levelFiveEffect", true);
         MOMENTUM_MESSAGES = common.define("actionBarMessages", true);
         common.pop();

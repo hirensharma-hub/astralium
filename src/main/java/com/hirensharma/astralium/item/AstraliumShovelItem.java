@@ -18,6 +18,7 @@ public class AstraliumShovelItem extends ShovelItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.astralium.shovel.flavor").withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable("tooltip.astralium.shovel.ability").withStyle(ChatFormatting.AQUA));
         tooltip.add(Component.translatable("tooltip.astralium.shovel.cycle").withStyle(ChatFormatting.GRAY));
     }
 }
