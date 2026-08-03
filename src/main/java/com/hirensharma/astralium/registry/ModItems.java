@@ -33,7 +33,7 @@ public final class ModItems {
     public static final RegistryObject<Item> ASTRALIUM_UPGRADE_TEMPLATE = ITEMS.register("astralium_upgrade_template", ModItems::createUpgradeTemplate);
     public static final RegistryObject<Item> ASTRALIUM_SWORD = ITEMS.register("astralium_sword", () -> new AstraliumSwordItem(ModToolTiers.ASTRALIUM, 4, -2.3F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_PICKAXE = ITEMS.register("astralium_pickaxe", () -> new AstraliumPickaxeItem(ModToolTiers.ASTRALIUM, 2, -2.7F, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> ASTRALIUM_AXE = ITEMS.register("astralium_axe", () -> new AstraliumAxeItem(ModToolTiers.ASTRALIUM, 6.5F, -3.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ASTRALIUM_AXE = ITEMS.register("astralium_axe", () -> new AstraliumAxeItem(ModToolTiers.ASTRALIUM, 6.0F, -3.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_SHOVEL = ITEMS.register("astralium_shovel", () -> new AstraliumShovelItem(ModToolTiers.ASTRALIUM, 2.0F, -2.9F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_HOE = ITEMS.register("astralium_hoe", () -> new AstraliumHoeItem(ModToolTiers.ASTRALIUM, -3, 0.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_HELMET = ITEMS.register("astralium_helmet", () -> new AstraliumArmorItem(ModArmorMaterials.ASTRALIUM, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
