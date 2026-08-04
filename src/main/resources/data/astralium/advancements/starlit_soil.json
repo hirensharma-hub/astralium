@@ -1,5 +1,5 @@
 {
-  "parent": "astralium:root",
+  "parent": "astralium:beyond_netherite",
   "display": {
     "icon": { "item": "astralium:astralium_hoe" },
     "title": { "translate": "advancements.astralium.starlit_soil.title" },
