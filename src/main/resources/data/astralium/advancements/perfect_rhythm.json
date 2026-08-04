@@ -1,5 +1,5 @@
 {
-  "parent": "astralium:root",
+  "parent": "astralium:shifting_excavation",
   "display": {
     "icon": {
       "item": "astralium:astralium_sword"

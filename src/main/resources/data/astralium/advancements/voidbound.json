@@ -1,5 +1,5 @@
 {
-  "parent": "astralium:root",
+  "parent": "astralium:starlight_aegis",
   "display": {
     "icon": {
       "item": "astralium:astralium_chestplate"
