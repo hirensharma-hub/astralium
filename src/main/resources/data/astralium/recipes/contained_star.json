@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "AUA",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "astralium:astralium_ingot"
+    },
+    "U": {
+      "item": "astralium:unstable_star"
+    }
+  },
+  "result": {
+    "item": "astralium:contained_star",
+    "count": 1
+  }
+}

@@ -31,6 +31,7 @@ public final class ModItems {
     public static final RegistryObject<Item> RAW_ASTRALIUM = ITEMS.register("raw_astralium", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ASTRALIUM_INGOT = ITEMS.register("astralium_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNSTABLE_STAR = ITEMS.register("unstable_star", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CONTAINED_STAR = ITEMS.register("contained_star", () -> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_UPGRADE_TEMPLATE = ITEMS.register("astralium_upgrade_template", ModItems::createUpgradeTemplate);
     public static final RegistryObject<Item> ASTRALIUM_SWORD = ITEMS.register("astralium_sword", () -> new AstraliumSwordItem(ModToolTiers.ASTRALIUM, 4, -2.3F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_PICKAXE = ITEMS.register("astralium_pickaxe", () -> new AstraliumPickaxeItem(ModToolTiers.ASTRALIUM, 2, -2.7F, new Item.Properties().fireResistant()));
