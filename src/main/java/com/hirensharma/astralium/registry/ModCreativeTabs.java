@@ -27,6 +27,7 @@ public final class ModCreativeTabs {
             output.accept(ModItems.ASTRALIUM_INGOT.get());
             output.accept(ModItems.UNSTABLE_STAR.get());
             output.accept(ModItems.CONTAINED_STAR.get());
+            output.accept(ModItems.ASTRALET_OF_PRESERVATION.get());
             output.accept(ModItems.ASTRALIUM_ORE.get());
             output.accept(ModItems.RAW_ASTRALIUM_BLOCK.get());
             output.accept(ModItems.ASTRALIUM_BLOCK.get());

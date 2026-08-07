@@ -7,6 +7,7 @@ import com.hirensharma.astralium.item.AstraliumHoeItem;
 import com.hirensharma.astralium.item.AstraliumPickaxeItem;
 import com.hirensharma.astralium.item.AstraliumShovelItem;
 import com.hirensharma.astralium.item.AstraliumSwordItem;
+import com.hirensharma.astralium.item.AstraletOfPreservationItem;
 import com.hirensharma.astralium.item.ModArmorMaterials;
 import com.hirensharma.astralium.item.ModToolTiers;
 import java.util.List;
@@ -32,6 +33,7 @@ public final class ModItems {
     public static final RegistryObject<Item> ASTRALIUM_INGOT = ITEMS.register("astralium_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNSTABLE_STAR = ITEMS.register("unstable_star", () -> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> CONTAINED_STAR = ITEMS.register("contained_star", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ASTRALET_OF_PRESERVATION = ITEMS.register("astralet_of_preservation", () -> new AstraletOfPreservationItem(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_UPGRADE_TEMPLATE = ITEMS.register("astralium_upgrade_template", ModItems::createUpgradeTemplate);
     public static final RegistryObject<Item> ASTRALIUM_SWORD = ITEMS.register("astralium_sword", () -> new AstraliumSwordItem(ModToolTiers.ASTRALIUM, 4, -2.3F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ASTRALIUM_PICKAXE = ITEMS.register("astralium_pickaxe", () -> new AstraliumPickaxeItem(ModToolTiers.ASTRALIUM, 2, -2.7F, new Item.Properties().fireResistant()));

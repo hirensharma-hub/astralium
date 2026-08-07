@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ACA",
+    "ESE",
+    "ACA"
+  ],
+  "key": {
+    "A": {
+      "item": "astralium:astralium_ingot"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "S": {
+      "item": "astralium:contained_star"
+    }
+  },
+  "result": {
+    "item": "astralium:astralet_of_preservation",
+    "count": 1
+  }
+}

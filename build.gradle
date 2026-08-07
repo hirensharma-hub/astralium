@@ -41,6 +41,7 @@ mixin {
 
 repositories {
     mavenCentral()
+    maven { name = 'Curios'; url = uri('https://maven.theillusivec4.top/') }
     maven { url = 'https://maven.blamejared.com' }
     maven { url = 'https://api.modrinth.com/maven' }
 }
@@ -48,6 +49,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     runtimeOnly fg.deobf('mezz.jei:jei-1.20.1-forge:15.2.0.27')
+    compileOnly fg.deobf('top.theillusivec4.curios:curios-forge:5.9.1+1.20.1:api')
+    runtimeOnly fg.deobf('top.theillusivec4.curios:curios-forge:5.9.1+1.20.1')
     compileOnly fg.deobf('maven.modrinth:jade:11.7.1')
     runtimeOnly fg.deobf('maven.modrinth:jade:11.7.1')
 }

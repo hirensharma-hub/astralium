@@ -18,6 +18,7 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
@@ -145,6 +146,9 @@ public class AstraliumEvents {
     @SubscribeEvent
     public void onClone(PlayerEvent.Clone event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            if (event.getOriginal() instanceof ServerPlayer original && event.isWasDeath()) {
+                AstraletPreservationHandler.restoreOnClone(original, player);
+            }
             VoidFloorHandler.clearSupportedLogoutMarker(event.getOriginal());
             VoidFloorHandler.clearSupportedLogoutMarker(player);
             AstralMomentumHandler.clear(player);
@@ -204,12 +208,21 @@ public class AstraliumEvents {
     @SubscribeEvent
     public void onDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            AstraletPreservationHandler.captureOnDeath(player);
             VoidFloorHandler.clearSupportedLogoutMarker(player);
             AstralMomentumHandler.clear(player);
             ArmorAbilityHandler.clear(player);
             CycleMiningModePacket.clear(player);
             VoidFloorHandler.clearPlayer(player);
             PickaxeAreaMiningHandler.clearPlayer(player.getUUID());
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void onDrops(LivingDropsEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player
+            && AstraletPreservationHandler.shouldSuppressDrops(player)) {
+            event.setCanceled(true);
         }
     }
 
