@@ -189,7 +189,7 @@ public class AstraliumEvents {
     public void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             VoidFloorHandler.armLoginRestore(player);
-            VoidFloorHandler.restoreSupportedLogout(player);
+            VoidFloorHandler.restoreSupportedLogout(player, true);
             ModNetworking.sendExcavationConfig(player);
         }
     }

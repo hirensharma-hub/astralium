@@ -9,6 +9,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin {
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void astralium$prepareVoidFloor(CallbackInfo callbackInfo) {
+        ItemEntity item = (ItemEntity) (Object) this;
+        VoidFloorHandler.tickItem(item);
+    }
+
     @Inject(method = "tick", at = @At("TAIL"))
     private void astralium$applyVoidFloor(CallbackInfo callbackInfo) {
         ItemEntity item = (ItemEntity) (Object) this;
