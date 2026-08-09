@@ -1,0 +1,146 @@
+plugins {
+    id 'idea'
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.116'
+}
+
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+repositories {
+    mavenCentral()
+    maven { name = 'NeoForge'; url = uri('https://maven.neoforged.net/releases') }
+    maven { name = 'Curios'; url = uri('https://maven.theillusivec4.top/') }
+    maven { url = 'https://maven.blamejared.com' }
+    maven { url = 'https://api.modrinth.com/maven' }
+}
+
+configurations {
+    productionRemapper
+    productionRemapLibraries
+}
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', new File(
+            projectDir.parentFile,
+            'build/createSrgToMcp/output.srg'
+        ).absolutePath
+        modSource project.sourceSets.main
+    }
+    client { systemProperty 'forge.enabledGameTestNamespaces', project.mod_id }
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+dependencies {
+    implementation "net.neoforged:forge:${neo_version}"
+    // Include Curios client/network classes for the NeoForge key fallback.
+    compileOnly 'top.theillusivec4.curios:curios-forge:5.9.1+1.20.1'
+    def remappedCurios = new File(
+        gradle.gradleUserHomeDir,
+        'caches/forge_gradle/deobf_dependencies/top/theillusivec4/curios/curios-forge/5.9.1+1.20.1_mapped_official_1.20.1/curios-forge-5.9.1+1.20.1_mapped_official_1.20.1.jar'
+    )
+    if (remappedCurios.isFile()) {
+        runtimeOnly files(remappedCurios)
+    } else {
+        runtimeOnly 'top.theillusivec4.curios:curios-forge:5.9.1+1.20.1'
+    }
+    compileOnly 'maven.modrinth:jade:11.7.1'
+
+    productionRemapper 'net.neoforged:AutoRenamingTool:2.0.17:all'
+    productionRemapLibraries "net.neoforged:forge:${neo_version}:universal"
+    productionRemapLibraries 'top.theillusivec4.curios:curios-forge:5.9.1+1.20.1'
+    productionRemapLibraries 'maven.modrinth:jade:11.7.1'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(ProcessResources).configureEach {
+    dependsOn tasks.named('compileJava')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(layout.buildDirectory.file('tmp/compileJava/compileJava-refmap.json')) {
+        rename { 'astralium.refmap.json' }
+    }
+    def props = [minecraft_version: minecraft_version, forge_version: neo_version, mod_id: mod_id,
+        mod_name: mod_name, mod_version: mod_version, mod_authors: mod_authors, mod_description: mod_description]
+    inputs.properties props
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand props }
+}
+
+jar {
+    manifest.attributes(
+        'MixinConfigs': 'astralium.mixins.json',
+        'FMLAT': 'META-INF/accesstransformer.cfg'
+    )
+}
+
+def productionMappings = new File(
+    gradle.gradleUserHomeDir,
+    "caches/forge_gradle/minecraft_user_repo/de/oceanlabs/mcp/mcp_config/${minecraft_version}-${mcp_version}/srg_to_official_${minecraft_version}.tsrg"
+)
+def officialMinecraftJar = layout.buildDirectory.file(
+    "neoForm/neoFormJoined${minecraft_version}-${mcp_version}/steps/recompile/output.jar"
+)
+def productionJarFile = layout.buildDirectory.file(
+    "libs/${base.archivesName.get()}-${project.version}-production.jar"
+)
+
+tasks.register('productionJar', JavaExec) {
+    group = 'build'
+    description = 'Builds the inheritance-aware SRG production JAR used by Minecraft 1.20.1.'
+    dependsOn tasks.named('jar')
+    classpath = configurations.productionRemapper
+    mainClass = 'net.neoforged.art.Main'
+    inputs.file(tasks.named('jar').flatMap { it.archiveFile })
+    inputs.file(productionMappings)
+    inputs.file(officialMinecraftJar)
+    outputs.file(productionJarFile)
+
+    doFirst {
+        if (!productionMappings.isFile()) {
+            throw new GradleException("Missing production mappings: ${productionMappings}")
+        }
+        File officialJar = officialMinecraftJar.get().asFile
+        if (!officialJar.isFile()) {
+            throw new GradleException("Missing official Minecraft inheritance JAR: ${officialJar}")
+        }
+
+        List<String> remapArgs = [
+            '--input', tasks.named('jar').get().archiveFile.get().asFile.absolutePath,
+            '--output', productionJarFile.get().asFile.absolutePath,
+            '--map', productionMappings.absolutePath,
+            '--reverse',
+            '--lib', officialJar.absolutePath
+        ]
+        configurations.productionRemapLibraries.files
+            .findAll { it.name.endsWith('.jar') }
+            .each { library -> remapArgs.addAll(['--lib', library.absolutePath]) }
+        remapArgs.addAll(['--ann-fix', '--ids-fix', '--src-fix', '--record-fix', '--strip-sigs'])
+        setArgs(remapArgs)
+    }
+}
+
+tasks.named('build') {
+    finalizedBy tasks.named('productionJar')
+}
+
+publishing {
+    publications { register('mavenJava', MavenPublication) { from components.java } }
+    repositories { maven { url = "file://${project.projectDir}/repo" } }
+}

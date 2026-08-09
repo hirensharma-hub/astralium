@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "astralium:astralium_ore",
+    "astralium:astralium_block",
+    "astralium:raw_astralium_block",
+    "astralium:astralium_ingot",
+    "astralium:raw_astralium",
+    "astralium:astralium_pickaxe",
+    "astralium:astralium_axe",
+    "astralium:astralium_shovel",
+    "astralium:astralium_hoe",
+    "astralium:astralium_sword",
+    "astralium:astralium_helmet",
+    "astralium:astralium_chestplate",
+    "astralium:astralium_leggings",
+    "astralium:astralium_boots",
+    "astralium:astralium_upgrade_template"
+  ]
+}

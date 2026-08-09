@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "astralium:astralium_upgrade_template"
+  },
+  "base": {
+    "item": "minecraft:netherite_sword"
+  },
+  "addition": {
+    "item": "astralium:astralium_ingot"
+  },
+  "result": {
+    "item": "astralium:astralium_sword"
+  }
+}

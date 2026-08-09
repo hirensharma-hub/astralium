@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "moisture=0": { "model": "astralium:block/astral_farmland_dry" },
+    "moisture=1": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=2": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=3": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=4": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=5": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=6": { "model": "astralium:block/astral_farmland_moist" },
+    "moisture=7": { "model": "astralium:block/astral_farmland_moist" }
+  }
+}

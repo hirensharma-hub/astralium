@@ -1,0 +1,4 @@
+{
+  "replace": false,
+  "values": [ "minecraft:farmland", "astralium:astral_farmland" ]
+}

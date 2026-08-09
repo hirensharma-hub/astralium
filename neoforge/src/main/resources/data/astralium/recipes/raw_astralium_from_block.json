@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "astralium:raw_astralium_block"
+    }
+  ],
+  "result": {
+    "item": "astralium:raw_astralium",
+    "count": 9
+  }
+}

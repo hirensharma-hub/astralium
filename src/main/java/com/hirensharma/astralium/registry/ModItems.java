@@ -54,8 +54,8 @@ public final class ModItems {
             Component.translatable("item.astralium.astralium_upgrade_template.base_slot_description"),
             Component.translatable("item.astralium.astralium_upgrade_template.additions_slot_description"),
             List.of(
-                new ResourceLocation("item/empty_slot_helmet"), new ResourceLocation("item/empty_slot_chestplate"),
-                new ResourceLocation("item/empty_slot_leggings"), new ResourceLocation("item/empty_slot_boots"),
+                new ResourceLocation("item/empty_armor_slot_helmet"), new ResourceLocation("item/empty_armor_slot_chestplate"),
+                new ResourceLocation("item/empty_armor_slot_leggings"), new ResourceLocation("item/empty_armor_slot_boots"),
                 new ResourceLocation("item/empty_slot_sword"), new ResourceLocation("item/empty_slot_pickaxe"),
                 new ResourceLocation("item/empty_slot_axe"), new ResourceLocation("item/empty_slot_hoe"),
                 new ResourceLocation("item/empty_slot_shovel")),

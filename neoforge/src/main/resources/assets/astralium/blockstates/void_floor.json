@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "astralium:block/void_floor"
+    },
+    "waterlogged=true": {
+      "model": "astralium:block/void_floor"
+    }
+  }
+}

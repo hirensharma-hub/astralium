@@ -1,0 +1,56 @@
+{
+  "mappings": {
+    "com/hirensharma/astralium/mixin/TargetingConditionsMixin": {
+      "test": "Lnet/minecraft/world/entity/ai/targeting/TargetingConditions;m_26885_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
+    },
+    "com/hirensharma/astralium/mixin/DragonStrafePlayerPhaseMixin": {
+      "doServerTick": "Lnet/minecraft/world/entity/boss/enderdragon/phases/DragonStrafePlayerPhase;m_6989_()V"
+    },
+    "com/hirensharma/astralium/mixin/PitcherCropBlockMixin": {
+      "canSurvive": "Lnet/minecraft/world/level/block/PitcherCropBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+    },
+    "com/hirensharma/astralium/mixin/ItemEntityMixin": {
+      "tick": "Lnet/minecraft/world/entity/item/ItemEntity;m_8119_()V"
+    },
+      "com/hirensharma/astralium/mixin/AbstractDragonPhaseInstanceAccessor": {
+        "dragon": "f_31176_:Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;"
+      },
+      "com/hirensharma/astralium/mixin/EndCityPieceMixin": {
+        "handleDataMarker": "Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;m_213704_(Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V"
+      },
+    "com/hirensharma/astralium/mixin/CropBlockMixin": {
+      "canSurvive": "Lnet/minecraft/world/level/block/CropBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+    },
+    "com/hirensharma/astralium/mixin/StemBlockMixin": {
+      "canSurvive": "Lnet/minecraft/world/level/block/BushBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+    }
+  },
+  "data": {
+    "searge": {
+      "com/hirensharma/astralium/mixin/TargetingConditionsMixin": {
+        "test": "Lnet/minecraft/world/entity/ai/targeting/TargetingConditions;m_26885_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z"
+      },
+      "com/hirensharma/astralium/mixin/DragonStrafePlayerPhaseMixin": {
+        "doServerTick": "Lnet/minecraft/world/entity/boss/enderdragon/phases/DragonStrafePlayerPhase;m_6989_()V"
+      },
+      "com/hirensharma/astralium/mixin/PitcherCropBlockMixin": {
+        "canSurvive": "Lnet/minecraft/world/level/block/PitcherCropBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+      },
+      "com/hirensharma/astralium/mixin/ItemEntityMixin": {
+        "tick": "Lnet/minecraft/world/entity/item/ItemEntity;m_8119_()V"
+      },
+      "com/hirensharma/astralium/mixin/AbstractDragonPhaseInstanceAccessor": {
+        "dragon": "f_31176_:Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;"
+      },
+      "com/hirensharma/astralium/mixin/EndCityPieceMixin": {
+        "handleDataMarker": "Lnet/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece;m_213704_(Ljava/lang/String;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)V"
+      },
+      "com/hirensharma/astralium/mixin/CropBlockMixin": {
+        "canSurvive": "Lnet/minecraft/world/level/block/CropBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+      },
+      "com/hirensharma/astralium/mixin/StemBlockMixin": {
+        "canSurvive": "Lnet/minecraft/world/level/block/BushBlock;m_7898_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "astralium:astralium_ore",
+    "astralium:astralium_block",
+    "astralium:raw_astralium_block"
+  ]
+}
