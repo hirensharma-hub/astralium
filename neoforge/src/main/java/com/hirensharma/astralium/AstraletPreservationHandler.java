@@ -5,8 +5,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
+import java.util.Collection;
 
 public final class AstraletPreservationHandler {
     private static final String SNAPSHOT_TAG = "AstraliumAstraletInventory";
@@ -24,6 +26,7 @@ public final class AstraletPreservationHandler {
     }
 
     public static void captureOnDeath(ServerPlayer player) {
+        clearSnapshot(player);
         if (!isEquipped(player)) return;
         ListTag inventory = new ListTag();
         player.getInventory().save(inventory);
@@ -36,11 +39,24 @@ public final class AstraletPreservationHandler {
         ListTag inventory = data.getList(SNAPSHOT_TAG, 10);
         clone.getInventory().clearContent();
         clone.getInventory().load(inventory);
-        data.remove(SNAPSHOT_TAG);
+        clearSnapshot(original);
         return true;
     }
 
-    public static boolean shouldSuppressDrops(Player player) {
-        return player.getPersistentData().contains(SNAPSHOT_TAG);
+    public static void removeProtectedDrops(Player player, Collection<ItemEntity> drops) {
+        if (!player.getPersistentData().contains(SNAPSHOT_TAG)) return;
+        ListTag inventory = player.getPersistentData().getList(SNAPSHOT_TAG, 10);
+        drops.removeIf(drop -> {
+            ItemStack droppedStack = drop.getItem();
+            for (int index = 0; index < inventory.size(); index++) {
+                ItemStack savedStack = ItemStack.of(inventory.getCompound(index));
+                if (ItemStack.isSameItemSameTags(savedStack, droppedStack)) return true;
+            }
+            return false;
+        });
+    }
+
+    public static void clearSnapshot(Player player) {
+        player.getPersistentData().remove(SNAPSHOT_TAG);
     }
 }

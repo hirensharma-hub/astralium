@@ -1,7 +1,6 @@
 package com.hirensharma.astralium.item;
 
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import net.minecraft.ChatFormatting;
@@ -17,7 +16,6 @@ import java.util.List;
 public class AstraletOfPreservationItem extends Item implements ICurioItem {
     public AstraletOfPreservationItem(Properties properties) {
         super(properties);
-        CuriosApi.registerCurio(this, this);
     }
 
     @Override
