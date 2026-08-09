@@ -1,16 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "CDC",
+    " D ",
     "DND",
-    "CDC"
+    " D "
   ],
   "key": {
     "D": {
       "item": "minecraft:dragon_breath"
-    },
-    "C": {
-      "item": "minecraft:coal_block"
     },
     "N": {
       "item": "minecraft:nether_star"
