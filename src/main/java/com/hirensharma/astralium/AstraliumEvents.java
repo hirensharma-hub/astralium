@@ -148,6 +148,8 @@ public class AstraliumEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             if (event.getOriginal() instanceof ServerPlayer original && event.isWasDeath()) {
                 AstraletPreservationHandler.restoreOnClone(original, player);
+            } else {
+                AstraletPreservationHandler.clearSnapshot(event.getOriginal());
             }
             VoidFloorHandler.clearSupportedLogoutMarker(event.getOriginal());
             VoidFloorHandler.clearSupportedLogoutMarker(player);
@@ -188,8 +190,9 @@ public class AstraliumEvents {
     @SubscribeEvent
     public void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
+            AstraletPreservationHandler.clearSnapshot(player);
             VoidFloorHandler.armLoginRestore(player);
-            VoidFloorHandler.restoreSupportedLogout(player);
+            VoidFloorHandler.restoreSupportedLogout(player, true);
             ModNetworking.sendExcavationConfig(player);
         }
     }
@@ -221,8 +224,8 @@ public class AstraliumEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onDrops(LivingDropsEvent event) {
         if (event.getEntity() instanceof ServerPlayer player
-            && AstraletPreservationHandler.shouldSuppressDrops(player)) {
-            event.setCanceled(true);
+            && !event.isCanceled()) {
+            AstraletPreservationHandler.removeProtectedDrops(player, event.getDrops());
         }
     }
 

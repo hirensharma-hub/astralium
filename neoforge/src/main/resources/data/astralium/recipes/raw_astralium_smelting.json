@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "astralium:raw_astralium"
+  },
+  "result": "astralium:astralium_ingot",
+  "experience": 1.2,
+  "cookingtime": 200
+}

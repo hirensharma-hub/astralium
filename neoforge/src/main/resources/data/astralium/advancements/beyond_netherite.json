@@ -1,0 +1,32 @@
+{
+  "parent": "astralium:root",
+  "display": {
+    "icon": {
+      "item": "astralium:astralium_ingot"
+    },
+    "title": {
+      "translate": "advancements.astralium.beyond_netherite.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.beyond_netherite.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astralium:astralium_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

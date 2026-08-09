@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "astralium:block/raw_astralium_block"
+    }
+  }
+}

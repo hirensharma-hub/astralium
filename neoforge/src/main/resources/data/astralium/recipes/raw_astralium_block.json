@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "RRR",
+    "RRR",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "item": "astralium:raw_astralium"
+    }
+  },
+  "result": {
+    "item": "astralium:raw_astralium_block"
+  }
+}

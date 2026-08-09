@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#astralium:has_astralium_ore",
+  "features": "astralium:astralium_ore",
+  "step": "underground_ores"
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "astralium:written_in_the_stars",
+  "display": {
+    "icon": {
+      "item": "astralium:unstable_star"
+    },
+    "title": {
+      "translate": "advancements.astralium.unstable_star.title"
+    },
+    "description": {
+      "translate": "advancements.astralium.unstable_star.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_unstable_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "astralium:unstable_star"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
